@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Maria Panjaitan</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Fredoka One (Bubble Y2K) & Quicksand (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'scrap-bg': '#6989B1',
+                        'scrap-dark': '#1a2a3a',
+                        'scrap-yellow': '#FBBF24',
+                    },
+                    fontFamily: {
+                        'bubble': ['"Fredoka One"', 'cursive'],
+                        'body': ['"Quicksand"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #6989B1;
+            overflow-x: hidden;
+            color: #1a2a3a;
+        }
+
+        /* Y2K Bubble Text Effect */
+        .y2k-title {
+            color: white;
+            -webkit-text-stroke: 2.5px #1a2a3a;
+            text-shadow: 5px 5px 0px #1a2a3a;
+            letter-spacing: 1.5px;
+            line-height: 1.2;
+        }
+
+        .y2k-subtitle {
+            color: #FBBF24;
+            -webkit-text-stroke: 2px #1a2a3a;
+            text-shadow: 3px 3px 0px #1a2a3a;
+        }
+
+        .y2k-heading {
+            color: white;
+            -webkit-text-stroke: 1.5px #1a2a3a;
+            text-shadow: 3px 3px 0px #1a2a3a;
+        }
+
+        /* Polaroid Frame */
+        .polaroid {
+            background: #ffffff;
+            padding: 12px 12px 40px 12px;
+            box-shadow: 6px 8px 0px rgba(26, 42, 58, 0.4);
+            position: relative;
+            display: inline-block;
+            border: 2px solid #1a2a3a;
+            transition: transform 0.3s ease;
+        }
+        .polaroid:hover {
+            transform: scale(1.02) rotate(0deg) !important;
+            z-index: 20;
+        }
+
+        /* Scrapbook Paper Block */
+        .paper-block {
+            background: #ffffff;
+            padding: 2rem;
+            box-shadow: 5px 7px 0px rgba(26, 42, 58, 0.3);
+            border: 2px solid #1a2a3a;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        /* Tape Graphic */
+        .tape {
+            position: absolute;
+            background-color: rgba(245, 245, 245, 0.85);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset 0 0 5px rgba(0,0,0,0.05);
+            width: 120px;
+            height: 35px;
+            z-index: 10;
+            /* Texture line to make it look like real masking tape */
+            border-left: 2px dashed rgba(0,0,0,0.1);
+            border-right: 2px dashed rgba(0,0,0,0.1);
+        }
+        .tape-center { top: -15px; left: 50%; transform: translateX(-50%) rotate(-3deg); }
+        .tape-top-left { top: -15px; left: -30px; transform: rotate(-40deg); }
+        .tape-top-right { top: -15px; right: -30px; transform: rotate(40deg); }
+        .tape-bottom-center { bottom: -15px; left: 50%; transform: translateX(-50%) rotate(2deg); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #6989B1; }
+        ::-webkit-scrollbar-thumb { background: #1a2a3a; border-radius: 5px; }
+        
+        /* Nav transition */
+        .nav-link { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="font-body antialiased min-h-screen relative pb-10">
+
+    <!-- Navbar (Sticky, Centered, Pill-shaped) -->
+    <nav class="sticky top-4 z-50 flex justify-center w-full px-4 mb-8">
+        <div class="bg-white/20 backdrop-blur-md p-1.5 rounded-full border border-white/30 shadow-lg">
+            <ul class="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+                <li>
+                    <!-- Active state default on load (Beranda) -->
+                    <a href="#hero" class="nav-link block px-4 sm:px-6 py-2 rounded-full font-bold text-sm sm:text-base bg-[#1a2a3a] text-white">
+                        Beranda
+                    </a>
+                </li>
+                <li>
+                    <a href="#tentang" class="nav-link block px-4 sm:px-6 py-2 rounded-full font-bold text-sm sm:text-base text-white hover:bg-white/90 hover:text-[#1a2a3a]">
+                        Tentang Saya
+                    </a>
+                </li>
+                <li>
+                    <a href="#keterampilan" class="nav-link block px-4 sm:px-6 py-2 rounded-full font-bold text-sm sm:text-base text-white hover:bg-white/90 hover:text-[#1a2a3a]">
+                        Keterampilan & Hobi
+                    </a>
+                </li>
+                <li>
+                    <a href="#pendidikan" class="nav-link block px-4 sm:px-6 py-2 rounded-full font-bold text-sm sm:text-base text-white hover:bg-white/90 hover:text-[#1a2a3a]">
+                        Pendidikan
+                    </a>
+                </li>
+                <li>
+                    <a href="#pengalaman" class="nav-link block px-4 sm:px-6 py-2 rounded-full font-bold text-sm sm:text-base text-white hover:bg-white/90 hover:text-[#1a2a3a]">
+                        Pengalaman
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 overflow-hidden">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[80vh] flex flex-col items-center justify-center text-center py-10 relative">
+            
+            <!-- Ornamen Doodle (Opsional) -->
+            <div class="absolute top-20 left-10 md:left-32 text-white/40 text-6xl rotate-12"><i class="fa-solid fa-star"></i></div>
+            <div class="absolute bottom-40 right-10 md:right-32 text-white/40 text-7xl -rotate-12"><i class="fa-solid fa-cloud"></i></div>
+
+            <!-- Tempat Foto Profil (Polaroid) -->
+            <div class="mb-10 relative">
+                <div class="polaroid rotate-3 max-w-[250px] sm:max-w-[300px]">
+                    <div class="tape tape-center"></div>
+                    <img src="foto-maria.jpg" alt="Maria Panjaitan" class="w-full h-auto object-cover border-2 border-gray-100">
+                    <div class="absolute bottom-2 left-0 right-0 text-center font-bubble text-xl text-[#1a2a3a]">✨ Me! ✨</div>
+                </div>
+            </div>
+
+            <!-- Teks Perkenalan -->
+            <h1 class="font-bubble text-5xl sm:text-6xl md:text-8xl y2k-title mb-4 px-2">
+                Halo, saya Maria Panjaitan
+            </h1>
+            <h2 class="font-bubble text-3xl sm:text-4xl md:text-5xl y2k-subtitle">
+                NIM: 4233111046
+            </h2>
+        </section>
+
+        <!-- 1. Tentang Saya -->
+        <section id="tentang" class="py-16 scroll-mt-20">
+            <h3 class="font-bubble text-4xl sm:text-5xl y2k-heading text-center mb-12">Tentang Saya</h3>
+            
+            <div class="max-w-3xl mx-auto relative transform -rotate-1">
+                <div class="paper-block">
+                    <div class="tape tape-top-left"></div>
+                    <div class="tape tape-bottom-center w-20"></div>
+                    
+                    <p class="text-lg sm:text-xl leading-relaxed text-gray-800 mb-6 font-semibold">
+                        Saya adalah mahasiswa tingkat akhir yang memiliki ketertarikan mendalam pada dua bidang yang saling melengkapi: <span class="bg-yellow-200 px-2 py-1 rounded text-[#1a2a3a] border border-[#1a2a3a]">pengolahan data</span> dan <span class="bg-pink-200 px-2 py-1 rounded text-[#1a2a3a] border border-[#1a2a3a]">desain visual</span>. Saya percaya bahwa data yang kompleks dapat disampaikan dengan lebih efektif melalui sentuhan visual yang tepat.
+                    </p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg border-2 border-dashed border-[#6989B1]">
+                        <h4 class="font-bubble text-2xl text-[#1a2a3a] mb-3 flex items-center gap-3">
+                            <i class="fa-solid fa-bullseye text-red-500"></i> Visi & Tujuan Karir:
+                        </h4>
+                        <p class="text-lg text-gray-700 font-medium">
+                            Menjadi individu dan profesional yang selalu mengedepankan kreativitas, baik dalam menyelesaikan masalah analitis maupun dalam menciptakan karya visual yang berdampak.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Keterampilan & Hobi -->
+        <section id="keterampilan" class="py-16 scroll-mt-20">
+            <h3 class="font-bubble text-4xl sm:text-5xl y2k-heading text-center mb-12">Keterampilan & Hobi</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Desain Visual -->
+                <div class="polaroid rotate-2">
+                    <div class="tape tape-center"></div>
+                    <div class="w-full aspect-square bg-green-100 flex items-center justify-center mb-4 border-2 border-gray-200">
+                        <img src="foto-1.jpg" alt="Desain Visual" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bubble text-xl text-center text-[#1a2a3a] mb-2">Desain Visual</h4>
+                    <p class="text-sm text-gray-700 text-center font-medium leading-tight">
+                        Selama di kampus, saya aktif di divisi PDD. Mengubah konsep acara menjadi visual menarik adalah keahlian saya.
+                    </p>
+                </div>
+
+                <!-- Melukis -->
+                <div class="polaroid -rotate-2">
+                    <div class="tape tape-center w-24"></div>
+                    <div class="w-full aspect-square bg-purple-100 flex items-center justify-center mb-4 border-2 border-gray-200">
+                        <img src="foto-2.jpg" alt="Melukis" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bubble text-xl text-center text-[#1a2a3a] mb-2">Melukis</h4>
+                    <p class="text-sm text-gray-700 text-center font-medium leading-tight">
+                        Di waktu luang, saya mengekspresikan imajinasi melalui kanvas. Melatih kesabaran & kepekaan warna.
+                    </p>
+                </div>
+
+                <!-- Memasak -->
+                <div class="polaroid rotate-3">
+                    <div class="tape tape-center w-20 bg-pink-100/80"></div>
+                    <div class="w-full aspect-square bg-red-100 flex items-center justify-center mb-4 border-2 border-gray-200">
+                        <img src="foto-3.jpg" alt="Memasak" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bubble text-xl text-center text-[#1a2a3a] mb-2">Memasak</h4>
+                    <p class="text-sm text-gray-700 text-center font-medium leading-tight">
+                        Sangat menikmati proses mencoba resep baru. Sama seperti desain, memasak butuh kreativitas & presisi.
+                    </p>
+                </div>
+
+                <!-- Membaca -->
+                <div class="polaroid -rotate-3">
+                    <div class="tape tape-center"></div>
+                    <div class="w-full aspect-square bg-yellow-100 flex items-center justify-center mb-4 border-2 border-gray-200">
+                        <img src="foto-4.jpg" alt="Membaca" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bubble text-xl text-center text-[#1a2a3a] mb-2">Membaca</h4>
+                    <p class="text-sm text-gray-700 text-center font-medium leading-tight">
+                        Novel adalah jendela inspirasi. Membantu memperluas sudut pandang dan menemukan ide baru.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. Pendidikan & Pencapaian -->
+        <section id="pendidikan" class="py-16 scroll-mt-20">
+            <h3 class="font-bubble text-4xl sm:text-5xl y2k-heading text-center mb-12">Pendidikan & Pencapaian</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Pendidikan -->
+                <div class="paper-block transform rotate-1">
+                    <div class="tape tape-top-right"></div>
+                    <h4 class="font-bubble text-3xl text-[#1a2a3a] mb-6 border-b-4 border-yellow-300 pb-2 inline-block">Pendidikan</h4>
+                    
+                    <ul class="space-y-5 text-gray-800 font-medium">
+                        <li class="flex gap-4 items-start">
+                            <span class="text-2xl mt-1">👶</span>
+                            <div>
+                                <strong class="text-xl text-[#1a2a3a] block">Profil Singkat</strong>
+                                Lahir di Medan pada 13 Oktober 2005. Anak pertama dari tiga bersaudara (satu adik perempuan dan satu adik laki-laki).
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <span class="text-2xl mt-1">🎒</span>
+                            <div>
+                                <strong class="text-xl text-[#1a2a3a] block">Pendidikan Dasar</strong>
+                                TK & SD YP Santo Paulus
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <span class="text-2xl mt-1">🏫</span>
+                            <div>
+                                <strong class="text-xl text-[#1a2a3a] block">Pendidikan Menengah</strong>
+                                SMP & SMA Methodist 2 Medan
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <span class="text-2xl mt-1">🎓</span>
+                            <div>
+                                <strong class="text-xl text-[#1a2a3a] block">Pendidikan Tinggi</strong>
+                                Saat ini menempuh pendidikan sebagai mahasiswa tingkat akhir.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pencapaian -->
+                <div class="paper-block transform -rotate-1 bg-yellow-50">
+                    <div class="tape tape-top-left"></div>
+                    <h4 class="font-bubble text-3xl text-[#1a2a3a] mb-6 border-b-4 border-blue-300 pb-2 inline-block">Pencapaian</h4>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-5 bg-white p-4 rounded-xl border-2 border-[#1a2a3a] shadow-[4px_4px_0_#1a2a3a]">
+                            <div class="w-14 h-14 bg-yellow-200 rounded-full flex items-center justify-center text-3xl border border-[#1a2a3a]">🏆</div>
+                            <h5 class="font-bold text-xl text-[#1a2a3a]">Juara Lomba Karya Tulis Ilmiah (LKTI)</h5>
+                        </div>
+                        <div class="flex items-center gap-5 bg-white p-4 rounded-xl border-2 border-[#1a2a3a] shadow-[4px_4px_0_#1a2a3a]">
+                            <div class="w-14 h-14 bg-yellow-200 rounded-full flex items-center justify-center text-3xl border border-[#1a2a3a]">🏆</div>
+                            <h5 class="font-bold text-xl text-[#1a2a3a]">Juara Lomba Desain Flyer</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Pengalaman -->
+        <section id="pengalaman" class="py-16 scroll-mt-20">
+            <h3 class="font-bubble text-4xl sm:text-5xl y2k-heading text-center mb-12">Pengalaman</h3>
+            
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- Gallery 1 -->
+                <div class="polaroid transform -rotate-3 w-full sm:w-[320px]">
+                    <div class="tape tape-center"></div>
+                    <img src="foto-5.jpeg" alt="Kegiatan 1" class="w-full h-auto object-cover border-2 border-gray-200">
+                    <p class="font-bubble text-center mt-4 text-xl text-[#1a2a3a]">Kepanitiaan Kampus "Math Fair"</p>
+                </div>
+                
+                <!-- Gallery 2 -->
+                <div class="polaroid transform rotate-2 w-full sm:w-[320px] mt-4 sm:mt-8">
+                    <div class="tape tape-center bg-blue-100/80"></div>
+                    <img src="foto-6.jpg" alt="Kegiatan 2" class="w-full h-auto object-cover border-2 border-gray-200">
+                    <p class="font-bubble text-center mt-4 text-xl text-[#1a2a3a]">PLP</p>
+                </div>
+                
+                <!-- Gallery 3 -->
+                <div class="polaroid transform -rotate-2 w-full sm:w-[320px] mt-4 sm:mt-16">
+                    <div class="tape tape-center"></div>
+                    <img src="foto-7.jpg" alt="Kegiatan 3" class="w-full h-auto object-cover border-2 border-gray-200">
+                    <p class="font-bubble text-center mt-4 text-xl text-[#1a2a3a]">KKN</p>
+				</div>
+					
+				 <!-- Gallery 4 -->
+                <div class="polaroid transform -rotate-2 w-full sm:w-[320px] mt-4 sm:mt-16">
+                    <div class="tape tape-center"></div>
+                    <img src="foto-8.jpg" alt="Kegiatan 3" class="w-full h-auto object-cover border-2 border-gray-200">
+                    <p class="font-bubble text-center mt-4 text-xl text-[#1a2a3a]">English Debat</p>
+				</div>
+				
+				<!-- Gallery 5 -->
+                <div class="polaroid transform -rotate-2 w-full sm:w-[320px] mt-4 sm:mt-16">
+                    <div class="tape tape-center"></div>
+                    <img src="foto-9.jpg" alt="Kegiatan 3" class="w-full h-auto object-cover border-2 border-gray-200">
+                    <p class="font-bubble text-center mt-4 text-xl text-[#1a2a3a]">LKTI</p>
+					
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-20 relative border-t-4 border-[#1a2a3a] bg-white text-[#1a2a3a] py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            
+            <h3 class="font-bubble text-3xl sm:text-4xl mb-4">Mari terhubung & berkolaborasi!</h3>
+            <p class="font-medium text-gray-600 mb-8 text-lg">Anda dapat menghubungi saya melalui platform di bawah ini:</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 font-bold text-lg">
+                <!-- Email -->
+                <a href="mailto:mariapanjaitan001@gmail.com" class="flex items-center gap-3 bg-red-100 hover:bg-red-200 px-6 py-3 rounded-full border-2 border-[#1a2a3a] shadow-[3px_3px_0_#1a2a3a] transition-transform hover:-translate-y-1">
+                    <i class="fa-solid fa-envelope text-xl"></i>
+                    <span>Email</span>
+                </a>
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/6285930167823" class="flex items-center gap-3 bg-green-100 hover:bg-green-200 px-6 py-3 rounded-full border-2 border-[#1a2a3a] shadow-[3px_3px_0_#1a2a3a] transition-transform hover:-translate-y-1">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>0859-3016-7823</span>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://instagram.com/mrpn_0" class="flex items-center gap-3 bg-pink-100 hover:bg-pink-200 px-6 py-3 rounded-full border-2 border-[#1a2a3a] shadow-[3px_3px_0_#1a2a3a] transition-transform hover:-translate-y-1">
+                    <i class="fa-brands fa-instagram text-2xl"></i>
+                    <span>@mrpn_0</span>
+                </a>
+            </div>
+            
+            <div class="mt-12 text-sm text-gray-500 font-medium">
+                &copy; 2026 Maria Panjaitan. Designed with 🎨 and 💻.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Sederhana untuk Mengubah Warna Navigasi Kapsul Saat Di-scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Offset sedikit agar pergantian menu terasa pas saat mulai memasuki area
+                    if (scrollY >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    // Reset kelas semua link ke bentuk tidak aktif (tulisan putih, background transparan)
+                    link.classList.remove('bg-[#1a2a3a]', 'text-white');
+                    link.classList.add('text-white', 'hover:bg-white/90', 'hover:text-[#1a2a3a]');
+                    
+                    // Tambahkan kelas aktif pada bagian yang sedang dilihat
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.remove('text-white', 'hover:bg-white/90', 'hover:text-[#1a2a3a]');
+                        link.classList.add('bg-[#1a2a3a]', 'text-white');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
